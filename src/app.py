@@ -2,6 +2,12 @@ from fastapi import FastAPI, Request
 import logging
 from fastapi.responses import JSONResponse
 from https.controllers.sellers.route import router
+from database import Base, engine
+from models.seller import Seller
+
+Base.metadata.drop_all(bind=engine)
+Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI()
 
